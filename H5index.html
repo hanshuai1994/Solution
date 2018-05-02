@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>html5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+    <link rel="stylesheet" href="//static.pchome.net/public/framework/swiper/swiper-3.4.1.min.css">
+    <link rel="stylesheet" href="//static.pchome.net/public/framework/swiper/animate.min.css">
+    <script src="//static.pchome.net/public/framework/jquery/jquery-1.7.2.min.js"></script>
+    <script src="//static.pchome.net/public/framework/swiper/swiper-3.4.1.jquery.min.js"></script>
+    <script src="//static.pchome.net/public/framework/swiper/swiper.animate1.0.2.min.js"></script>
+    <script src="//static.pchome.net/public/plugin/jquery.qrcode.min.js"></script>
+    <script>
+        window.onload = function() {
+            var isMobile = '';
+            if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE|HTC/.test(navigator.userAgent))) {
+                if (window.location.href.indexOf("?mobile") < 0) {
+                    try {
+                        if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                            isMobile = true;
+                        } else {
+                            isMobile = false;
+                        }
+                    } catch (e) { }
+                }
+            };
+            if (isMobile) {
+                //
+            } else {
+                $("body").html('<p   style=' + "font-size:20px;font-weight:700;color:#000;text-align:center;margin-top:100px;" + '>请使用手机扫描二维码访问^_^<br><br><br><br><div style="margin:0 auto; width:240px;" id="qrCode"></div></p>');
+            };
+            var Href = window.location.href;
+            $("#qrCode").qrcode({
+                render: "table", //table方式 
+                width: 240, //宽度 
+                height: 240, //高度 
+                text: Href //任意内容 
+            });
+        }
+        if (/Android (d+.d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+</head>
+<body>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
